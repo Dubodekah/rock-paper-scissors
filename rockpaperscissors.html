@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <script>
+        function computerSelection() {
+            let choices = ["rock", "paper", "scissors"]
+            computerMove = choices[Math.floor(Math.random() * choices.length)]
+            console.log(computerMove)
+            return computerMove
+        }
+
+        function playerSelection() {
+            playerMove = prompt("Please enter rock, paper or scissors")
+            playerMove = playerMove.toLowerCase()
+            console.log(playerMove)
+            return playerMove
+        }
+
+        function playRound(playerSelection, computerSelection) {            
+            if (playerMove == "rock") {
+                if (computerMove == "rock") {
+                    alert("You tied this round")
+                    return "tie"
+                }
+                if (computerMove == "paper") {
+                    alert("You lost this round")
+                    return "loss"
+                }
+                if (computerMove == "scissors") {
+                    alert("You won this round")
+                    return "win"
+                }
+            }
+            if (playerMove == "paper") {
+                if (computerMove == "rock") {
+                    alert("You won this round")
+                    return "win"
+                }
+                if (computerMove == "paper") {
+                    alert("You tied this round")
+                    return "tie"
+                }
+                if (computerMove == "scissors") {
+                    alert("You lost this round")
+                    return "loss"
+                }
+            }
+            if (playerMove == "scissors") {
+                if (computerMove == "rock") {
+                    alert("You lost this round")
+                    return "loss"
+                }
+                if (computerMove == "paper") {
+                    alert("You won this round")
+                    return "win"
+                }
+                if (computerMove == "scissors") {
+                    alert("You tied this round")
+                    return "tie"
+                }
+            }
+        }
+
+        function game() {
+            let count = 1;
+            let playerPoint = 0;
+            let computerPoint = 0;
+            while (count <= 5){
+                let playRoundResult = playRound(playerSelection(), computerSelection())
+                if (playRoundResult == "win") {
+                    playerPoint++
+                }
+                if (playRound == "loss") {
+                    computerPoint++
+                }
+                if (playerPoint > computerPoint & count == 5) {
+                    alert("You win!")
+                    break;
+                }
+                if (playerPoint < computerPoint & count == 5) {
+                    alert("You lose!")
+                    break;
+                }
+                if (playerPoint == computerPoint & count == 5) {
+                    alert("You tied!")
+                    break;
+                }
+                count++
+            }
+        }      
+
+        game();
+    </script>
+</body>
+
+</html>
