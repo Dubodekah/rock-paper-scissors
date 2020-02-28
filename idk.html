@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock Paper Scissors</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <button id="btnR">Rock</button>
+    <button id="btnP">Paper</button>
+    <button id="btnS">Scissors</button>
+    <script>
+        function computerSelection() {
+            let choices = ["rock", "paper", "scissors"]
+            computerMove = choices[Math.floor(Math.random() * choices.length)]
+            return computerMove
+        }
+
+        let playerSelection;
+
+        function playRound(playerMove) {
+            const computerMove = computerSelection();
+            if (playerMove == "rock") {
+                if (computerMove == "rock") {
+                    alert("You tied this round")
+                    return updateGame("tie")
+                }
+                if (computerMove == "paper") {
+                    alert("You lost this round")
+                    return updateGame("loss")
+                }
+                if (computerMove == "scissors") {
+                    alert("You won this round")
+                    return updateGame("win")
+                }
+            }
+            if (playerMove == "paper") {
+                if (computerMove == "rock") {
+                    alert("You won this round")
+                    return updateGame("win")
+                }
+                if (computerMove == "paper") {
+                    alert("You tied this round")
+                    return updateGame("tie")
+                }
+                if (computerMove == "scissors") {
+                    alert("You lost this round")
+                    return updateGame("loss")
+                }
+            }
+            if (playerMove == "scissors") {
+                if (computerMove == "rock") {
+                    alert("You lost this round")
+                    return updateGame("loss")
+                }
+                if (computerMove == "paper") {
+                    alert("You won this round")
+                    return updateGame("win")
+                }
+                if (computerMove == "scissors") {
+                    alert("You tied this round")
+                    return updateGame("tie")
+                }
+            }
+        }
+        const btnR = document.querySelector('#btnR');
+        btnR.addEventListener("click", (e) => {
+            if (count <= 5) {
+                computerSelection();
+                playerMove = "rock";
+                playRound(playerMove);
+                return playerMove;
+            }
+        })
+
+        const btnP = document.querySelector('#btnP');
+        btnP.addEventListener("click", (e) => {
+            if (count <= 5) {
+                computerSelection();
+                playerMove = "paper";
+                playRound(playerMove);
+                return playerMove;
+            }
+        })
+
+        const btnS = document.querySelector('#btnS');
+        btnS.addEventListener("click", (e) => {
+            if (count <= 5) {
+                computerSelection();
+                playerMove = "scissors";
+                playRound(playerMove);
+                return playerMove;
+            }
+        })
+
+
+
+        let count = 1;
+        function updateGame(playRoundResult) {
+            let playerPoint = 0;
+            let computerPoint = 0;
+
+            if (playRoundResult == "win") {
+                playerPoint++
+            }
+            if (playRoundResult == "loss") {
+                computerPoint++
+            }
+            if (playerPoint > computerPoint & count == 5) {
+                alert("You win! Please refresh the page to play again.")
+            }
+            if (playerPoint < computerPoint & count == 5) {
+                alert("You lose! Please refresh the page to play again.")
+            }
+            if (playerPoint == computerPoint & count == 5) {
+                alert("You tied! Please refresh the page to play again.")
+            }
+            count++
+            console.log(count)
+        }
+
+
+    </script>
+</body>
+
+</html>
